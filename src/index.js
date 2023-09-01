@@ -17,11 +17,10 @@ client.on('ready', () => {
 client.on('interactionCreate', async interaction => {
     if (!interaction.isChatInputCommand()) return;
 
-    if (interaction.commandName === 'hey') {
-        await interaction.reply('Hello!');
-    }
-    if (interaction.commandName === 'ping') {
-        await interaction.reply('Pong!');
+    if (interaction.commandName === 'add') {
+        const firstNumber = interaction.options.get('first').value;
+        const secondNumber = interaction.options.get('second').value;
+        await interaction.reply(`The sum is ${firstNumber + secondNumber}`);
     }
 });
 

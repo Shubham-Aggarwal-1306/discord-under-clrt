@@ -1,0 +1,15 @@
+{
+  "name": "discord-under-clrt",
+  "version": "1.0.0",
+  "description": "![Discord.js Logo](https://avatars1.githubusercontent.com/u/26492485?s=280&v=4)",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "discord.js": "^14.13.0",
+    "dotenv": "^16.3.1"
+  }
+}

@@ -1,4 +1,4 @@
-const {Client, IntentsBitField} = require('discord.js');
+const { Client, IntentsBitField, EmbedBuilder } = require('discord.js');
 const dotenv = require('dotenv');
 dotenv.config();
 const client = new Client({
@@ -17,10 +17,31 @@ client.on('ready', () => {
 client.on('interactionCreate', async interaction => {
     if (!interaction.isChatInputCommand()) return;
 
-    if (interaction.commandName === 'add') {
-        const firstNumber = interaction.options.get('first').value;
-        const secondNumber = interaction.options.get('second').value;
-        await interaction.reply(`The sum is ${firstNumber + secondNumber}`);
+    if (interaction.commandName === 'embed') {
+        const embed = new EmbedBuilder()
+            .setTitle('A slick little embed')
+            .setDescription('Hello, this is a slick embed!').setColor('#0099ff').addFields(
+                { name: 'Regular field title', value: 'Some value here' },
+                { name: '\u200B', value: '\u200B' },
+                { name: 'Inline field title', value: 'Some value here', inline: true },
+                { name: 'Inline field title', value: 'Some value here', inline: true },
+            ).setTimestamp();
+        await interaction.reply({ embeds: [embed] });
+    }
+});
+
+
+client.on('messageCreate', async message => {
+    if (message.content === 'embed') {
+        const embed = new EmbedBuilder()
+            .setTitle('A slick little embed')
+            .setDescription('Hello, this is a slick embed!').setColor('#0099ff').addFields(
+                { name: 'Regular field title', value: 'Some value here' },
+                { name: '\u200B', value: '\u200B' },
+                { name: 'Inline field title', value: 'Some value here', inline: true },
+                { name: 'Inline field title', value: 'Some value here', inline: true },
+            ).setTimestamp();
+        await message.reply({ embeds: [embed] });
     }
 });
 

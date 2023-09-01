@@ -14,10 +14,14 @@ client.on('ready', () => {
     console.log(`Logged in as ${client.user.tag}!`);
 });
 
-client.on('messageCreate', async (message) => {
-    if (message.author.bot) return;
-    if (message.content === 'hello') {
-        await message.reply('hello');
+client.on('interactionCreate', async interaction => {
+    if (!interaction.isChatInputCommand()) return;
+
+    if (interaction.commandName === 'hey') {
+        await interaction.reply('Hello!');
+    }
+    if (interaction.commandName === 'ping') {
+        await interaction.reply('Pong!');
     }
 });
 

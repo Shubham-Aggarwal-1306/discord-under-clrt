@@ -36,7 +36,7 @@ module.exports = async (client, interaction) => {
             }
         } if (command.botPermissionsRequired?.length) {
             for (const permission of command.botPermissionsRequired) {
-                if (!interaction.guild.me.permissions.has(permission)) {
+                if (!interaction.guild.members.me.permissions.has(permission)) {
                     return interaction.reply({
                         content: 'I do not have the required permissions to run this command.',
                         ephemeral: true

@@ -8,6 +8,10 @@ module.exports = {
     // deleted: false,
 
     callback: async (client, interaction) => {
-        await interaction.reply("Pong!");
+        await interaction.deferReply();
+        const reply = await interaction.fetchReply();
+        const ping = reply.createdTimestamp - interaction.createdTimestamp;
+
+        await interaction.editReply(`Pong! Latency: ${ping}ms! API Latency: ${client.ws.ping}ms`);
     }
 }

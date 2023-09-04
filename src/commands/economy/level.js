@@ -16,7 +16,7 @@ module.exports = {
 
         await interaction.deferReply();
 
-        const user = interaction.options.get("user")?.user || interaction.member.id;
+        const user = interaction.options.get("user")?.value || interaction.member.id;
 
         const userObject = await interaction.guild.members.fetch(user);
         const fetchLevel = await Level.findOne({
@@ -48,7 +48,7 @@ module.exports = {
             .setLevel(fetchLevel.level)
             .setRank(currentRank)
             .setRequiredXP(calculateLevelXP(fetchLevel.level))
-            .setStatus(userObject.presence.status)
+            .setStatus(userObject.presence?.status)
             .setProgressBar("#4c447a ", "COLOR")
             .setUsername(userObject.user.username)
             .setDiscriminator(userObject.user.discriminator);

@@ -48,7 +48,6 @@ module.exports = {
             .setLevel(fetchLevel.level)
             .setRank(currentRank)
             .setRequiredXP(calculateLevelXP(fetchLevel.level))
-            .setStatus(userObject.presence?.status)
             .setProgressBar("#4c447a ", "COLOR")
             .setUsername(userObject.user.username)
             .setDiscriminator(userObject.user.discriminator);
